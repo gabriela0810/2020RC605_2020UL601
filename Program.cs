@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using _2020RC605_2020UL601;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<VentasContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("ventasdbConnection")
+));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
